@@ -27,19 +27,28 @@
   <h1>🔐 KeyNius – Security Suite</h1>
 
   <!-- PASSWORD ASSESSOR -->
-  <div class="box">
-    <h2>Password Assessor</h2>
-    <input type="password" id="passwordInput" placeholder="Enter password">
-    <button onclick="assessPassword()">Check Strength</button>
-    <p id="result"></p>
-  </div>
+ <div class="box">
+  <h2>🔐 Password Assessor</h2>
 
-  <!-- PASSWORD GENERATOR -->
-  <div class="box">
-    <h2>Password Generator</h2>
-    <button onclick="generatePassword()">Generate Secure Password</button>
-    <input type="text" id="generatedPassword" readonly>
-  </div>
+  <input
+    type="password"
+    id="passwordInput"
+    placeholder="Enter a password"
+    oninput="evaluatePassword()"
+  />
+
+  <p id="strengthLabel">Please enter a password</p>
+
+  <progress id="strengthBar" value="0" max="100"></progress>
+
+  <ul id="checklist">
+    <li id="length">○ Minimum 12 characters</li>
+    <li id="upper">○ At least 1 uppercase letter</li>
+    <li id="lower">○ At least 1 lowercase letter</li>
+    <li id="digit">○ At least 1 digit</li>
+    <li id="special">○ At least 1 special character</li>
+  </ul>
+</div>
 
 <script>
 function assessPassword() {
