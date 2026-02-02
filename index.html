@@ -1,134 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>KeyNius – Security Suite</title>
+
   <style>
     body {
-
-      <script>
-function evaluatePassword() {
-  const password = document.getElementById("passwordInput").value;
-  const strengthLabel = document.getElementById("strengthLabel");
-  const bar = document.getElementById("strengthBar");
-
-  const rules = {
-    length: password.length >= 12,
-    upper: /[A-Z]/.test(password),
-    lower: /[a-z]/.test(password),
-    digit: /[0-9]/.test(password),
-    special: /[^A-Za-z0-9]/.test(password)
-  };
-
-  let score = 0;
-
-  for (let rule in rules) {
-    const item = document.getElementById(rule);
-    if (rules[rule]) {
-      item.textContent = "✔ " + item.textContent.slice(2);
-      item.style.color = "#34D399";
-      score++;
-    } else {
-      item.textContent = "✖ " + item.textContent.slice(2);
-      item.style.color = "#F87171";
-    }
-  }
-
-  if (password.length === 0) {
-    strengthLabel.textContent = "Please enter a password";
-    bar.value = 0;
-    return;
-  }
-
-  bar.value = (score / 5) * 100;
-
-  if (score <= 2) {
-    strengthLabel.textContent = "Weak Password";
-    strengthLabel.style.color = "#F87171";
-  } else if (score === 3 || score === 4) {
-    strengthLabel.textContent = "Moderate Password";
-    strengthLabel.style.color = "#FBBF24";
-  } else {
-    strengthLabel.textContent = "Strong Password";
-    strengthLabel.style.color = "#34D399";
-  }
-}
-</script>
-
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       background: #0f172a;
       color: white;
       padding: 40px;
     }
-    input, button {
-      padding: 10px;
-      margin: 5px 0;
-      width: 100%;
-    }
+
     .box {
       background: #111827;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 30px;
+      max-width: 600px;
+      padding: 25px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+    }
+
+    progress {
+      width: 100%;
+      height: 12px;
+      margin: 10px 0;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin: 6px 0;
     }
   </style>
 </head>
+
 <body>
 
   <h1>🔐 KeyNius – Security Suite</h1>
 
   <!-- PASSWORD ASSESSOR -->
- <div class="box">
-  <h2>🔐 Password Assessor</h2>
+  <div class="box">
+    <h2>🔐 Password Assessor</h2>
 
-  <input
-    type="password"
-    id="passwordInput"
-    placeholder="Enter a password"
-    oninput="evaluatePassword()"
-  />
+    <input
+      type="password"
+      id="passwordInput"
+      placeholder="Enter a password"
+      oninput="evaluatePassword()"
+    />
 
-  <p id="strengthLabel">Please enter a password</p>
+    <p id="strengthLabel">Please enter a password</p>
 
-  <progress id="strengthBar" value="0" max="100"></progress>
+    <progress id="strengthBar" value="0" max="100"></progress>
 
-  <ul id="checklist">
-    <li id="length">○ Minimum 12 characters</li>
-    <li id="upper">○ At least 1 uppercase letter</li>
-    <li id="lower">○ At least 1 lowercase letter</li>
-    <li id="digit">○ At least 1 digit</li>
-    <li id="special">○ At least 1 special character</li>
-  </ul>
-</div>
+    <ul>
+      <li id="length">○ Minimum 12 characters</li>
+      <li id="upper">○ At least 1 uppercase letter</li>
+      <li id="lower">○ At least 1 lowercase letter</li>
+      <li id="digit">○ At least 1 digit</li>
+      <li id="special">○ At least 1 special character</li>
+    </ul>
+  </div>
 
-<script>
-function assessPassword() {
-  const pwd = document.getElementById("passwordInput").value;
-  let score = 0;
+  <!-- JAVASCRIPT -->
+  <script>
+    function evaluatePassword() {
+      const password = document.getElementById("passwordInput").value;
+      const strengthLabel = document.getElementById("strengthLabel");
+      const bar = document.getElementById("strengthBar");
 
-  if (pwd.length >= 12) score++;
-  if (/[A-Z]/.test(pwd)) score++;
-  if (/[a-z]/.test(pwd)) score++;
-  if (/[0-9]/.test(pwd)) score++;
-  if (/[^A-Za-z0-9]/.test(pwd)) score++;
+      const rules = {
+        length: password.length >= 12,
+        upper: /[A-Z]/.test(password),
+        lower: /[a-z]/.test(password),
+        digit: /[0-9]/.test(password),
+        special: /[^A-Za-z0-9]/.test(password)
+      };
 
-  let strength = "Weak";
-  if (score >= 4) strength = "Strong";
-  else if (score >= 3) strength = "Moderate";
+      let score = 0;
 
-  document.getElementById("result").innerText =
-    "Password Strength: " + strength;
-}
+      for (let rule in rules) {
+        const item = document.getElementById(rule);
+        if (rules[rule]) {
+          item.textContent = "✔ " + item.textContent.slice(2);
+          item.style.color = "#34D399";
+          score++;
+        } else {
+          item.textContent = "✖ " + item.textContent.slice(2);
+          item.style.color = "#F87171";
+        }
+      }
 
-function generatePassword() {
-  const chars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
-  let password = "";
-  for (let i = 0; i < 12; i++) {
-    password += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  document.getElementById("generatedPassword").value = password;
-}
-</script>
+      if (password.length === 0) {
+        strengthLabel.textContent = "Please enter a password";
+        strengthLabel.style.color = "#9CA3AF";
+        bar.value = 0;
+        return;
+      }
+
+      bar.value = (score / 5) * 100;
+
+      if (score <= 2) {
+        strengthLabel.textContent = "Weak Password";
+        strengthLabel.style.color = "#F87171";
+      } else if (score <= 4) {
+        strengthLabel.textContent = "Moderate Password";
+        strengthLabel.style.color = "#FBBF24";
+      } else {
+        strengthLabel.textContent = "Strong Password";
+        strengthLabel.style.color = "#34D399";
+      }
+    }
+  </script>
 
 </body>
 </html>
