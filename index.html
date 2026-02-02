@@ -8,9 +8,8 @@
 <body>
 
   <h1>KeyNius – Security Suite</h1>
-  <p>Defend • Generate • Validate</p>
+  <p class="subtitle">Defend • Generate • Validate</p>
 
-  <!-- Tabs -->
   <div class="tabs">
     <button onclick="showTab('assessor')">Password Assessor</button>
     <button onclick="showTab('generator')">Password Generator</button>
@@ -28,7 +27,7 @@
   <!-- PASSWORD GENERATOR -->
   <section id="generator" class="tool hidden">
     <h2>Password Generator</h2>
-    <label>Length:</label>
+    <label>Length (8–16)</label>
     <input type="number" id="genLength" value="12" min="8" max="16">
     <button onclick="runGenerator()">Generate</button>
     <pre id="genOutput"></pre>
@@ -37,3 +36,18 @@
   <!-- FORM VALIDATOR -->
   <section id="validator" class="tool hidden">
     <h2>Web Form Validator</h2>
+    <input id="fullName" placeholder="Full Name">
+    <input id="email" placeholder="Email">
+    <input id="username" placeholder="Username">
+    <textarea id="message" placeholder="Message"></textarea>
+    <button onclick="runValidator()">Submit</button>
+    <pre id="valOutput"></pre>
+  </section>
+
+  <script src="assessor.js"></script>
+  <script src="generator.js"></script>
+  <script src="validator.js"></script>
+  <script src="sanitizer.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
