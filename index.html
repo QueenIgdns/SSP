@@ -3,53 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <title>KeyNius – Web Security Tool</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>KeyNius – Web Security Tool</h1>
-<p>Milestone 1: Password Security & Input Validation</p>
+  <h1>KeyNius – Security Suite</h1>
+  <p>Defend • Generate • Validate</p>
 
-<hr>
+  <!-- Tabs -->
+  <div class="tabs">
+    <button onclick="showTab('assessor')">Password Assessor</button>
+    <button onclick="showTab('generator')">Password Generator</button>
+    <button onclick="showTab('validator')">Form Validator</button>
+  </div>
 
-<!-- PASSWORD ASSESSOR -->
-<h2>1. Password Strength Assessor</h2>
-<input type="password" id="assessPassword" placeholder="Enter password">
-<button type="button" onclick="checkPasswordStrength()">Check Strength</button>
-<p id="strengthResult"></p>
+  <!-- PASSWORD ASSESSOR -->
+  <section id="assessor" class="tool">
+    <h2>Password Strength Analyzer</h2>
+    <input type="password" id="assessPw" placeholder="Enter password">
+    <button onclick="runAssessor()">Assess</button>
+    <pre id="assessOutput"></pre>
+  </section>
 
-<hr>
+  <!-- PASSWORD GENERATOR -->
+  <section id="generator" class="tool hidden">
+    <h2>Password Generator</h2>
+    <label>Length:</label>
+    <input type="number" id="genLength" value="12" min="8" max="16">
+    <button onclick="runGenerator()">Generate</button>
+    <pre id="genOutput"></pre>
+  </section>
 
-<!-- PASSWORD GENERATOR -->
-<h2>2. Password Generator</h2>
-<button type="button" onclick="generatePassword()">Generate Password</button>
-<p id="genPassword"></p>
-<p id="genHash"></p>
-
-<hr>
-
-<!-- WEB FORM VALIDATOR -->
-<h2>3. Web Form Validator & Sanitizer</h2>
-
-<form onsubmit="handleSubmit(event)">
-  <label>Full Name</label><br>
-  <input id="fullName"><br><br>
-
-  <label>Email</label><br>
-  <input id="email"><br><br>
-
-  <label>Username</label><br>
-  <input id="username"><br><br>
-
-  <label>Message</label><br>
-  <textarea id="message"></textarea><br><br>
-
-  <button type="submit">Submit</button>
-</form>
-
-<h3>Sanitized Output</h3>
-<pre id="output"></pre>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+  <!-- FORM VALIDATOR -->
+  <section id="validator" class="tool hidden">
+    <h2>Web Form Validator</h2>
