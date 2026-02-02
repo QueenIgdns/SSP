@@ -7,34 +7,43 @@
 </head>
 <body>
 
-  <h1>Web Form Validator</h1>
+<body>
+
+<h1>KeyNius – Web Security Tool</h1>
+<p>Milestone 1: Password Security & Input Validation</p>
+
+<hr>
+
+<!-- PASSWORD ASSESSOR -->
+<section>
+  <h2>1. Password Strength Assessor</h2>
+  <input type="password" placeholder="Enter password">
+  <button>Check Strength</button>
+  <p><i>(Password strength result)</i></p>
+</section>
+
+<hr>
+
+<!-- PASSWORD GENERATOR -->
+<section>
+  <h2>2. Password Generator</h2>
+  <button>Generate Password</button>
+  <p><i>(Generated password + hash)</i></p>
+</section>
+
+<hr>
+
+<!-- WEB FORM VALIDATOR -->
+<section>
+  <h2>3. Web Form Validator & Sanitizer</h2>
 
   <form id="userForm" onsubmit="handleSubmit(event)">
-    
     <label>Full Name</label>
-    <input type="text" id="fullName">
+    <input id="fullName">
     <small id="errFullName"></small>
 
     <label>Email</label>
-    <input type="text" id="email">
-    <small id="errEmail"></small>
+    <input id="email">
 
-    <label>Username</label>
-    <input type="text" id="username">
-    <small id="errUsername"></small>
-
-    <label>Message</label>
-    <textarea id="message"></textarea>
-    <small id="errMessage"></small>
-
-    <button type="submit">Submit</button>
-  </form>
-
-  <h3>Sanitized Output</h3>
-  <pre id="output"></pre>
-
-  <script src="sqlDetector.js"></script>
-  <script src="sanitizer.js"></script>
-  <script src="validator.js"></script>
 </body>
 </html>
