@@ -11,22 +11,45 @@
 
 <hr>
 
+<!-- PASSWORD ASSESSOR -->
 <h2>1. Password Strength Assessor</h2>
-<input type="password" id="assessPassword">
-<button onclick="checkPasswordStrength()">Check Strength</button>
+<input type="password" id="assessPassword" placeholder="Enter password">
+<button type="button" onclick="checkPasswordStrength()">Check Strength</button>
 <p id="strengthResult"></p>
 
 <hr>
 
+<!-- PASSWORD GENERATOR -->
 <h2>2. Password Generator</h2>
-<button onclick="generatePassword()">Generate Password</button>
+<button type="button" onclick="generatePassword()">Generate Password</button>
 <p id="genPassword"></p>
 <p id="genHash"></p>
 
 <hr>
 
+<!-- WEB FORM VALIDATOR -->
 <h2>3. Web Form Validator & Sanitizer</h2>
 
 <form onsubmit="handleSubmit(event)">
   <label>Full Name</label><br>
-  <input id="fullName"><
+  <input id="fullName"><br><br>
+
+  <label>Email</label><br>
+  <input id="email"><br><br>
+
+  <label>Username</label><br>
+  <input id="username"><br><br>
+
+  <label>Message</label><br>
+  <textarea id="message"></textarea><br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+<h3>Sanitized Output</h3>
+<pre id="output"></pre>
+
+<script src="script.js"></script>
+
+</body>
+</html>
