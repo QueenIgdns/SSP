@@ -6,19 +6,30 @@ function showTab(id) {
 function runValidator() {
   alert("Validator button clicked");
 
+function runValidator() {
   const data = {
-    fullName: fullName.value,
-    email: email.value,
-    username: username.value,
-    message: message.value
+    fullName: document.getElementById("fullName").value,
+    email: document.getElementById("email").value,
+    username: document.getElementById("username").value,
+    message: document.getElementById("message").value
   };
 
+  // Clear old errors
+  ["fullName", "email", "username", "message"].forEach(id => {
+    document.getElementById(id + "Error").innerText = "";
+  });
+
   const errors = validateInput(data);
-  if (Object.keys(errors).length) {
-    valOutput.innerText = "Errors:\n" + JSON.stringify(errors, null, 2);
+
+  if (Object.keys(errors).length > 0) {
+    for (let key in errors) {
+      document.getElementById(key + "Error").innerText = errors[key];
+    }
     return;
   }
 
   const clean = sanitizeInput(data);
-  valOutput.innerText = "Sanitized Data:\n" + JSON.stringify(clean, null, 2);
+  document.getElementById("valOutput").innerText =
+    "Validation Successful\n\n" +
+    JSON.stringify(clean, null, 2);
 }
