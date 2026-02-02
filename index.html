@@ -7,47 +7,52 @@
 </head>
 <body>
 
-  <h1>KeyNius – Security Suite</h1>
-  <p class="subtitle">Defend • Generate • Validate</p>
+  <div class="app">
 
-  <div class="tabs">
-    <button onclick="showTab('assessor')">Password Assessor</button>
-    <button onclick="showTab('generator')">Password Generator</button>
-    <button onclick="showTab('validator')">Form Validator</button>
+    <h1>KeyNius</h1>
+    <p class="subtitle">Defend • Generate • Validate</p>
+
+    <div class="tabs">
+      <button onclick="showTab('assessor')">Password Assessor</button>
+      <button onclick="showTab('generator')">Password Generator</button>
+      <button onclick="showTab('validator')">Form Validator</button>
+    </div>
+
+    <!-- PASSWORD ASSESSOR -->
+    <section id="assessor" class="tool">
+      <h2>Password Strength Analyzer</h2>
+      <input type="password" id="assessPw" placeholder="Enter password">
+      <button onclick="runAssessor()">Assess</button>
+      <pre id="assessOutput"></pre>
+    </section>
+
+    <!-- PASSWORD GENERATOR -->
+    <section id="generator" class="tool hidden">
+      <h2>Password Generator</h2>
+      <label>Length (8–16)</label>
+      <input type="number" id="genLength" value="12" min="8" max="16">
+      <button onclick="runGenerator()">Generate</button>
+      <pre id="genOutput"></pre>
+    </section>
+
+    <!-- FORM VALIDATOR -->
+    <section id="validator" class="tool hidden">
+      <h2>Web Form Validator</h2>
+      <input id="fullName" placeholder="Full Name">
+      <input id="email" placeholder="Email">
+      <input id="username" placeholder="Username">
+      <textarea id="message" placeholder="Message"></textarea>
+      <button onclick="runValidator()">Submit</button>
+      <pre id="valOutput"></pre>
+    </section>
+
   </div>
-
-  <!-- PASSWORD ASSESSOR -->
-  <section id="assessor" class="tool">
-    <h2>Password Strength Analyzer</h2>
-    <input type="password" id="assessPw" placeholder="Enter password">
-    <button onclick="runAssessor()">Assess</button>
-    <pre id="assessOutput"></pre>
-  </section>
-
-  <!-- PASSWORD GENERATOR -->
-  <section id="generator" class="tool hidden">
-    <h2>Password Generator</h2>
-    <label>Length (8–16)</label>
-    <input type="number" id="genLength" value="12" min="8" max="16">
-    <button onclick="runGenerator()">Generate</button>
-    <pre id="genOutput"></pre>
-  </section>
-
-  <!-- FORM VALIDATOR -->
-  <section id="validator" class="tool hidden">
-    <h2>Web Form Validator</h2>
-    <input id="fullName" placeholder="Full Name">
-    <input id="email" placeholder="Email">
-    <input id="username" placeholder="Username">
-    <textarea id="message" placeholder="Message"></textarea>
-    <button onclick="runValidator()">Submit</button>
-    <pre id="valOutput"></pre>
-  </section>
 
   <script src="assessor.js"></script>
   <script src="generator.js"></script>
   <script src="validator.js"></script>
   <script src="sanitizer.js"></script>
   <script src="app.js"></script>
+
 </body>
 </html>
