@@ -4,9 +4,6 @@ function showTab(id) {
 }
 
 function runValidator() {
-  alert("Validator button clicked");
-
-function runValidator() {
   const data = {
     fullName: document.getElementById("fullName").value,
     email: document.getElementById("email").value,
